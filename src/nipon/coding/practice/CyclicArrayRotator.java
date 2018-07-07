@@ -6,26 +6,22 @@ public class CyclicArrayRotator {
 
     public static void main(String[] args) {
         int[] data = {1, 2, 3, 4, 5, 6, 7};
-        int d = 3;
-        CyclicArrayRotator arrayRotate = new CyclicArrayRotator();
-        arrayRotate.rotate(data, d);
+        CyclicArrayRotator cyclicArrayRotator = new CyclicArrayRotator();
+        cyclicArrayRotator.cyclicRotate(data);
         System.out.println(Arrays.toString(data));
     }
 
-    private void rotate(int[] data, int d) {
-        this.reverseRotate(data, 0, d - 1);
-        this.reverseRotate(data, d, data.length - 1);
-        this.reverseRotate(data, 0, data.length - 1);
-    }
+    private void cyclicRotate(int[] data) {
 
-    private void reverseRotate(int[] data, int start, int end) {
-        int temp;
-        while (start < end) {
-            temp = data[start];
-            data[start] = data[end];
-            data[end] = temp;
-            start++;
-            end--;
+        if (data.length == 0) {
+            return;
         }
+
+        int i, size = data.length, temp = data[0];
+
+        for (i = 0; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        data[size - 1] = temp;
     }
 }
