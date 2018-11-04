@@ -30,7 +30,6 @@ public class QuickSorter {
                 i++;
             }
         }
-
         swap(data, i, hight);
 
         return i;
@@ -41,5 +40,4 @@ public class QuickSorter {
         data[indexA] = data[indexB];
         data[indexB] = temp;
     }
-
 }
