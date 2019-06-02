@@ -27,22 +27,22 @@ public class GridStepFinder {
         test(points);
     }
 
-    public static void test(Point[] points) {
+    private static void test(Point[] points) {
 
         GridStepFinder gridStepFinder = new GridStepFinder();
         System.out.println("steps:" + gridStepFinder.findShortestPathSteps(points));
     }
 
-    public int findShortestPathSteps(Point[] points) {
+    private int findShortestPathSteps(Point[] points) {
         int steps = 0;
         for (int i = 0; i < points.length - 1; i++) {
-            steps += calculateShortestPaht(points[i], points[i + 1]);
+            steps += calculateShortestPath(points[i], points[i + 1]);
         }
 
         return steps;
     }
 
-    private int calculateShortestPaht(Point p1, Point p2) {
+    private int calculateShortestPath(Point p1, Point p2) {
 
         int dx = Math.abs(p1.getX() - p2.getX());
         int dy = Math.abs(p1.getY() - p2.getY());
