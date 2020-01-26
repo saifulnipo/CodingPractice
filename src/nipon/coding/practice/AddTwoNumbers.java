@@ -3,7 +3,7 @@ package nipon.coding.practice;
 /**
  * Problem: https://leetcode.com/problems/add-two-numbers/
  *
- * @author saifulnipo
+ * @author saiful.nipo
  */
 public class AddTwoNumbers {
 
