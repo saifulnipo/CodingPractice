@@ -6,7 +6,7 @@ import nipon.coding.model.Point;
  * Problem:
  * https://www.geeksforgeeks.org/minimum-steps-needed-to-cover-a-sequence-of-points-on-an-infinite-grid/
  *
- * @author nipon
+ * @author saifulnipo
  */
 public class GridStepFinder {
 

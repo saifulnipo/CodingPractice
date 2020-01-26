@@ -11,7 +11,7 @@ public class QuickSorter {
         System.out.println(Arrays.toString(data));
     }
 
-    public void quickSort(int[] data, int low, int hight) {
+    private void quickSort(int[] data, int low, int hight) {
 
         if (low < hight) {
             int pivot = partition(data, low, hight);
