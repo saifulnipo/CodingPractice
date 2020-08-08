@@ -24,13 +24,11 @@ public class MergeSorter {
     private void merge(int[] data, int start, int middel, int end) {
 
         /* Create temp arrays */
-        int left[] = new int[middel - start + 1];
-        int right[] = new int[end - middel];
+        int[] left = new int[middel - start + 1];
+        int[] right = new int[end - middel];
 
         /*Copy data to temp arrays*/
-        for (int i = 0; i < left.length; i++) {
-            left[i] = data[start + i];
-        }
+        if (left.length >= 0) System.arraycopy(data, start, left, 0, left.length);
         for (int j = 0; j < right.length; j++) {
             right[j] = data[middel + 1 + j];
         }
