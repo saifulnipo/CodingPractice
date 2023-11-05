@@ -1,5 +1,10 @@
 package nipon.coding.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+import javax.management.Query;
+
 import nipon.coding.model.Node;
 
 public class BinaryTree {
@@ -16,23 +21,23 @@ public class BinaryTree {
 		 * 7  12 50
 		 */
 		// insert data into BST
-		bst.insert(45);
-		bst.insert(10);
-		bst.insert(7);
-		bst.insert(12);
-		bst.insert(90);
-		bst.insert(50);
+		int[] data = { 45, 10, 7, 12, 90, 50 };
+		bst.insert(data);
 		// print the BST
-//		System.out.println("BST in order traverse (Left-Root-Right):");
-//		bst.inOrderTraverse();
-//		System.out.println("\nBST pre order traverse (Root-Left-Right):");
-//		bst.preOrderTraverse();
-		System.out.println("\nBST post order traverse (Left-Right-Root):");
-		bst.postOrderTraverse();
+		System.out.println("BST in order Traversal (Left-Root-Right):");
+		bst.inOrderTraversal();
+		System.out.println("\nBST pre order Traversal (Root-Left-Right):");
+		bst.preOrderTraversal();
+		System.out.println("\nBST post order Traversal (Left-Right-Root):");
+		bst.postOrderTraversal();
+		System.out.println("\nBST level Order Traversal:");
+		bst.levelOrderTraversal();
 	}
 
-	public void insert(int value) {
-		root = insertRecursively(root, value);
+	public void insert(int[] values) {
+		for (int value : values) {
+			root = insertRecursively(root, value);
+		}
 	}
 
 	private Node insertRecursively(Node node, int value) {
@@ -52,29 +57,46 @@ public class BinaryTree {
 		return node;
 	}
 
-	public void inOrderTraverse() {
+	public void inOrderTraversal() {
 		inOrderRecursive(root);
 	}
 
-	public void preOrderTraverse() {
+	public void preOrderTraversal() {
 		preOrderRecursive(root);
 	}
 
-	public void postOrderTraverse() {
+	public void postOrderTraversal() {
 		postOrderRecursive(root);
+	}
+
+	public void levelOrderTraversal() {
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			Node headNode = queue.poll();
+			visit(headNode);
+
+			if (headNode.left != null) {
+				queue.add(headNode.left);
+			}
+
+			if (headNode.right != null) {
+				queue.add(headNode.right);
+			}
+		}
 	}
 
 	private void postOrderRecursive(Node node) {
 		if (node != null) {
 			postOrderRecursive(node.left);
 			postOrderRecursive(node.right);
-			visit(node.value);
+			visit(node);
 		}
 	}
 
 	private void preOrderRecursive(Node node) {
 		if (node != null) {
-			visit(node.value);
+			visit(node);
 			preOrderRecursive(node.left);
 			preOrderRecursive(node.right);
 		}
@@ -83,12 +105,12 @@ public class BinaryTree {
 	private void inOrderRecursive(Node node) {
 		if (node != null) {
 			inOrderRecursive(node.left);
-			visit(node.value);
+			visit(node);
 			inOrderRecursive(node.right);
 		}
 	}
 
-	private void visit(int value) {
-		System.out.print(value + " ");
+	private void visit(Node node) {
+		System.out.print(node.value + " ");
 	}
 }
