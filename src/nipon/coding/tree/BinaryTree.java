@@ -2,13 +2,10 @@ package nipon.coding.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-import javax.management.Query;
-
-import nipon.coding.model.Node;
+import nipon.coding.model.TreeNode;
 
 public class BinaryTree {
-	Node root;
+	TreeNode root;
 
 	public static void main(String[] args) {
 		BinaryTree bst = new BinaryTree();
@@ -40,9 +37,9 @@ public class BinaryTree {
 		}
 	}
 
-	private Node insertRecursively(Node node, int value) {
+	private TreeNode insertRecursively(TreeNode node, int value) {
 		if (node == null) {
-			node = new Node(value);
+			node = new TreeNode(value);
 			return node;
 		}
 
@@ -70,10 +67,10 @@ public class BinaryTree {
 	}
 
 	public void levelOrderTraversal() {
-		Queue<Node> queue = new LinkedList<Node>();
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		queue.add(root);
 		while (!queue.isEmpty()) {
-			Node headNode = queue.poll();
+			TreeNode headNode = queue.poll();
 			visit(headNode);
 
 			if (headNode.left != null) {
@@ -86,7 +83,7 @@ public class BinaryTree {
 		}
 	}
 
-	private void postOrderRecursive(Node node) {
+	private void postOrderRecursive(TreeNode node) {
 		if (node != null) {
 			postOrderRecursive(node.left);
 			postOrderRecursive(node.right);
@@ -94,7 +91,7 @@ public class BinaryTree {
 		}
 	}
 
-	private void preOrderRecursive(Node node) {
+	private void preOrderRecursive(TreeNode node) {
 		if (node != null) {
 			visit(node);
 			preOrderRecursive(node.left);
@@ -102,7 +99,7 @@ public class BinaryTree {
 		}
 	}
 
-	private void inOrderRecursive(Node node) {
+	private void inOrderRecursive(TreeNode node) {
 		if (node != null) {
 			inOrderRecursive(node.left);
 			visit(node);
@@ -110,7 +107,7 @@ public class BinaryTree {
 		}
 	}
 
-	private void visit(Node node) {
+	private void visit(TreeNode node) {
 		System.out.print(node.value + " ");
 	}
 }
